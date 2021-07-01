@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DIR.Authentication.Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DIR.Authentication.Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ErrorDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErrorDetail" nillable="true" type="tns:ErrorDetail" />
+  <xs:complexType name="BrowserFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BrowserFault" nillable="true" type="tns:BrowserFault" />
+</xs:schema>

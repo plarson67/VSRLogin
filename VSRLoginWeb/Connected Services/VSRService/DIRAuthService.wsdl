@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DIRAuthService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://204.67.170.72:8080/DIRAuthService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://204.67.170.72:8080/DIRAuthService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DIR.Authentication.Service" />
+      <xsd:import schemaLocation="http://204.67.170.72:8080/DIRAuthService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDIRAuthService_GetSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSession" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_GetSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_GetSession_ErrorDetailFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/DIR.Authentication.Service" name="detail" element="q1:ErrorDetail" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_GetSession_BrowserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/DIR.Authentication.Service" name="detail" element="q2:BrowserFault" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_ValidateSessionID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateSessionID" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_ValidateSessionID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateSessionIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_ExtendSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExtendSession" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_ExtendSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExtendSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_SessionTimeout_InputMessage">
+    <wsdl:part name="parameters" element="tns:SessionTimeout" />
+  </wsdl:message>
+  <wsdl:message name="IDIRAuthService_SessionTimeout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SessionTimeoutResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDIRAuthService">
+    <wsdl:operation name="GetSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDIRAuthService/GetSession" message="tns:IDIRAuthService_GetSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDIRAuthService/GetSessionResponse" message="tns:IDIRAuthService_GetSession_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDIRAuthService/GetSessionErrorDetailFault" name="ErrorDetailFault" message="tns:IDIRAuthService_GetSession_ErrorDetailFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IDIRAuthService/GetSessionBrowserFaultFault" name="BrowserFaultFault" message="tns:IDIRAuthService_GetSession_BrowserFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateSessionID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDIRAuthService/ValidateSessionID" message="tns:IDIRAuthService_ValidateSessionID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDIRAuthService/ValidateSessionIDResponse" message="tns:IDIRAuthService_ValidateSessionID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExtendSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDIRAuthService/ExtendSession" message="tns:IDIRAuthService_ExtendSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDIRAuthService/ExtendSessionResponse" message="tns:IDIRAuthService_ExtendSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SessionTimeout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDIRAuthService/SessionTimeout" message="tns:IDIRAuthService_SessionTimeout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDIRAuthService/SessionTimeoutResponse" message="tns:IDIRAuthService_SessionTimeout_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDIRAuthService" type="tns:IDIRAuthService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSession">
+      <soap:operation soapAction="http://tempuri.org/IDIRAuthService/GetSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorDetailFault">
+        <soap:fault use="literal" name="ErrorDetailFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BrowserFaultFault">
+        <soap:fault use="literal" name="BrowserFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateSessionID">
+      <soap:operation soapAction="http://tempuri.org/IDIRAuthService/ValidateSessionID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtendSession">
+      <soap:operation soapAction="http://tempuri.org/IDIRAuthService/ExtendSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionTimeout">
+      <soap:operation soapAction="http://tempuri.org/IDIRAuthService/SessionTimeout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DIRAuthService">
+    <wsdl:port name="BasicHttpBinding_IDIRAuthService" binding="tns:BasicHttpBinding_IDIRAuthService">
+      <soap:address location="http://204.67.170.72:8080/DIRAuthService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
